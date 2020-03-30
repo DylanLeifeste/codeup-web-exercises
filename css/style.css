@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
+.fancy-header {
+color: purple;
+    text-decoration: underline;
+    text-align: center;
+}
+
+h2 {
+    color:green;
+    text-decoration: underline;
+}
+
+body {
+    background-image: url(https://c4.wallpaperflare.com/wallpaper/22/240/855/texture-gradient-simple-background-blue-wallpaper-preview.jpg);
+    background-size: cover;
+    font-family: "raleway", serif
+}
+
+
+.words {
+    color:hotpink;
+}
+
+p{
+    color:cyan;
+}
+
+.ul1 {
+    list-style-type: upper-roman;
+}
+
+.ul2 {
+    list-style: square;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid white;
+    padding: 10px;
+
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    color:red;
+}
+
