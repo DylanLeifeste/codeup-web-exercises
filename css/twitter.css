@@ -110,7 +110,7 @@ a {
     float: left;
 }
 .media-body{
-    width: calc(100% - 50%);
+    width: calc(100% - 50px);
     float: left;
 }
 .img-circle {
