@@ -1,0 +1,70 @@
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    text-align: center;
+    background: black;
+}
+main {
+    margin-top: 2em;
+    border: 10px  solid white;
+    border-radius: 10px;
+    display: inline-grid;
+    width: 500px;
+    height: 500px;
+    grid-template-areas:
+            "b1 b1 r1 r1 r1 r1 r1 r1"
+            "b1 b1 r1 r1 r1 r1 r1 r1"
+            "y1 y1 r1 r1 r1 r1 r1 r1"
+            "y1 y1 w2 w2 w3 w3 w3 w3"
+            "y1 y1 w2 w2 w3 w3 w3 w3"
+            "w1 w1 w2 w2 y2 y2 y2 y2"
+            "w1 w1 w2 w2 y2 y2 y2 y2"
+            "r2 r2 b2 b2 b2 b2 b2 b2";
+}
+main div {
+    color: black;
+    background: grey;
+    border: 3px solid black; /* thin out border to 1px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blue1 {
+    grid-area: b1;
+    background: #2F447A;
+}
+.red1 {
+    grid-area: r1;
+    background: #DC1C22;
+}
+.yellow1 {
+    grid-area: y1;
+    background: #FCCB09;
+}
+.white1 {
+    grid-area: w1;
+    background: white;
+}
+.white2 {
+    grid-area: w2;
+    background: white;
+}
+.white3 {
+    grid-area: w3;
+    background: white;
+}
+.yellow2 {
+    grid-area: y2;
+    background: #FCCB09;
+}
+.red2 {
+    grid-area: r2;
+    background: #DC1C22;
+}
+.blue2 {
+    grid-area: b2;
+    background: #2F447A;
+}

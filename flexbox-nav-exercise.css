@@ -22,6 +22,7 @@
  .logo {
      margin: auto;
      flex-basis: 10em;
+
  }
  nav a:hover {
      background-color: white;
