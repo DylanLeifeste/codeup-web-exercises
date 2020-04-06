@@ -33,10 +33,10 @@ h2, h3 {
     background: white;
     padding: 1em;
     margin: 0 auto;
-    justify-items: center;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    justify-items: center;
 
     /* enter needed declarations here */
 }

@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+ body {
+     margin: 0;
+ }
+ nav {
+     background-color: grey;
+ }
+ ul {
+     padding: 0;
+     list-style-type: none;
+     margin: 0;
+     display: flex;
+ }
+ nav a {
+     text-decoration: none;
+     color: black;
+     display: inline-block;
+     padding: 1em;
+ }
+ .logo {
+     margin: auto;
+     flex-basis: 10em;
+ }
+ nav a:hover {
+     background-color: white;
+ }
+
