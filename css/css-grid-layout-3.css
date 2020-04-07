@@ -1,0 +1,60 @@
+
+body {
+    margin: 0;
+}
+main {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 200px 100px 100px 100px;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    background-color: white;
+    grid-template-areas:
+            "one one one one"
+            "two three three four"
+            "two five five six"
+            "two sevn ate nine"
+            "two ten ten ten";
+}
+.numone {
+    background-color: yellow;
+    grid-area: one;
+}
+.numtwo {
+    background-color: yellow;
+    grid-area: two;
+}
+.numthree {
+    background-color: yellow;
+    grid-area: three;
+}
+.numfour {
+    background-color: yellow;
+    grid-area: four;
+}
+.numfive {
+    background-color: yellow;
+    grid-area: five;
+}
+.numsix {
+    background-color: yellow;
+    grid-area: six;
+}
+.numseven {
+    background-color: yellow;
+    grid-area: sevn;
+}
+.numeight {
+    background-color: yellow;
+    grid-area: ate;
+}
+.numnine {
+    background-color: yellow;
+    grid-area: nine;
+}
+.numten {
+    background-color: yellow;
+    grid-area: ten;
+}

@@ -1,0 +1,40 @@
+
+main {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 90px 500px 100px 100px;
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    grid-template-areas:
+            "head head head"
+            "nav art art"
+            "nav ad ad"
+            "nav ftr ftr";
+}
+body {
+    margin: 0;
+}
+.head {
+    background-color: limegreen;
+    grid-area: head;
+}
+.nav {
+    background-color: limegreen;
+    grid-area: nav;
+}
+.art {
+    background-color: limegreen;
+    grid-area: art;
+}
+.ads {
+    background-color: limegreen;
+    grid-area: ad;
+}
+.ftr {
+    background-color: limegreen;
+    grid-area: ftr;
+}

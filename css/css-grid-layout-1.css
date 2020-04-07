@@ -1,0 +1,39 @@
+
+main {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 90px 500px 100px;
+    height: 100vh;
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+    background-color: white;
+    grid-template-areas:
+        "head head head"
+        "nav art ad"
+        "nav ftr ftr";
+}
+body {
+    margin: 0;
+}
+.head {
+    background-color: yellow;
+    grid-area: head;
+}
+.nav {
+    background-color: yellow;
+    grid-area: nav;
+}
+.art {
+    background-color: yellow;
+    grid-area: art;
+}
+.ads {
+    background-color: yellow;
+    grid-area: ad;
+}
+.ftr {
+    background-color: yellow;
+    grid-area: ftr;
+}
