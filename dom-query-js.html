@@ -25,20 +25,37 @@
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
+<button id="btn-1">"hey Listen"</button>
+<button id="btn-2">Im blue</button>
+<button id="btn-3">list stuff</button>
+<button id="btn-4">wanna win?</button>
+
+
 <script>
     (function() {
         "use strict";
+
         // TODO: Uncomment next line and get the main header element by id
-         var mainHeader = document.getElementById('main-header');
+        function jsIsCool() {
+            var mainHeader = document.getElementById('main-header');
 
         // TODO: Set inner html of mainHeader to "JavaScript is Cool"
-        mainHeader.innerText = 'JavaScript is Cool';
+            mainHeader.innerText = 'JavaScript is Cool';
+        }
 
-        // TODO: Uncomment the next line and get the sub header element by id
-         var subHeader = document.getElementById('sub-header');
+        document.querySelector('#btn-1').addEventListener('click', jsIsCool);
 
-        // TODO: Set the text color of subHeader to blue
-        subHeader.style.color = 'blue';
+        var subHeaderToBlue = function () {
+            // TODO: Uncomment the next line and get the sub header element by id
+            var subHeader = document.getElementById('sub-header');
+            // TODO: Set the text color of subHeader to blue
+            subHeader.style.color = 'blue';
+        };
+        document.getElementById('btn-2').addEventListener('click', subHeaderToBlue);
+
+        document.getElementById('btn-3').addEventListener('click', function () {
+
+
         // TODO: Uncomment the next line and get all list items
          var listItems = document.getElementsByTagName('li');
 
@@ -56,14 +73,17 @@
                 listItems[i].style.color = 'blue';
             }
         }
+    });
 
-
-
+        function missionAcomplished() {
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
          var subParagraphs = document.getElementsByClassName('sub-paragraph');
 
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
         subParagraphs[0].innerHTML = "Mission Accomplished!";
+    }
+
+    document.getElementById('btn-4').addEventListener('click', missionAcomplished);
 
     })();
 </script>
