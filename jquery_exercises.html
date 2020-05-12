@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+</head>
+<body>
+<h1 id="top-text" class="codeup">JQUERY</h1>
+<hr>
+<p id="middle-text" class="codeup">The quick brown fox jumps over the lazy dog...did you know that that sentance contains every single lettter in the alphabet</p>
+<hr>
+<div id="codeup">Pew Pew Pew </div>
+
+<ul id="bottom-text" class="codeup">
+    <li>I</li>
+    <li>Like</li>
+    <li>Turtles</li>
+</ul>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script>
+    "use strict";
+    // $(document).ready(function() {
+    //     alert('the DOM has loaded')
+    // });
+
+    var contents = $('h1').html();
+    alert(contents);
+
+    $('li').css('font-size', '20px').html();
+    $('h1, p, li').css({
+        'background-color': '#fff2ac'
+    });
+
+</script>
+</body>
+</html>
