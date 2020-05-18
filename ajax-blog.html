@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Blog</title>
+</head>
+<body>
+
+<div id="post"></div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script>
+    $.ajax('data/blog.json').done(function (data) {
+
+        $('#post').append('<h1>' + data[0].title + '</h1>' + '<p>' + data[0].content + '</p>' + '<footer>' + data[0].categories + '<div></div>' + data[0].date + '</footer>' + '<h1>' + data[1].title + '</h1>' + '<p>' + data[1].content + '</p>' + '<footer>' + data[1].categories + '<div></div>' + data[1].date + '</footer')
+    });
+
+</script>
+</body>
+</html>

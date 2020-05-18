@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Konami Code</title>
+<style>
+    body {
+        background-image: url("img/caroleBaskin.jpg");
+    }
+</style>
+</head>
+    <audio id="first-sound" preload="auto">
+        <source src="sound/tiger-growl.wav">
+    </audio>
+    <audio id="whacked" preload="auto">
+        <source src="sound/whackedEM.wav">
+    </audio>
+
+<body>
+
+<h1>Konami Code</h1>
+
+<button>poke the tiger with a stiiick??</button>
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+    "use strict";
+
+    $(document).ready(function(){
+        alert('OH NO! That Carol Baskin got you, quick enter the KC to escape!!!');
+    });
+
+    $('button').click(function () {
+        $('#first-sound').get(0).play();
+    });
+
+    $(document).keyup(function(event){
+        console.log(event.keyCode);
+    });
+
+    var global = {
+
+        konami: function() {
+            var konamikeys = [38,38,40,40,37,39,37,39,66,65,13],
+                started = false,
+                count = 0;
+
+            $(document).keydown(function(e){
+                var reset = function() {
+                    started = false;
+                    count = 0;
+                };
+               var key = e.keyCode;
+                if(!started){
+                    if(key === 38){
+                        started = true;
+                    }
+                }
+                if (started){
+                    if (konamikeys[count] === key){
+                        count++;
+                    } else {
+                        reset();
+                    }
+                    if (count === 11){
+                        alert('LOOK!! JOE EXOTIC CAME TO RESCUE YOU');
+                        $('body').css({
+                            'background-image': 'url("img/JoeExotic.jpg")'
+                        });
+                        $('#whacked').play();
+                        reset();
+                    }
+                } else {
+                    reset();
+                }
+            });
+        }
+    };
+
+    global.konami();
+
+</script>
+</body>
+</html>

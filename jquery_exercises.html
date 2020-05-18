@@ -7,7 +7,7 @@
 <body>
 <h1 id="top-text" class="codeup">JQUERY</h1>
 <hr>
-<p id="middle-text" class="codeup">The quick brown fox jumps over the lazy dog...did you know that that sentance contains every single lettter in the alphabet</p>
+<p id="middle-text" class="codeup">The quick brown fox jumps over the lazy dog...did you know that that sentence contains every single letter in the alphabet??</p>
 <hr>
 <div id="codeup">Pew Pew Pew </div>
 
@@ -25,13 +25,33 @@
     //     alert('the DOM has loaded')
     // });
 
-    var contents = $('h1').html();
-    alert(contents);
+    // var contents = $('h1').html();
+    // alert(contents);
+    //
+    // $('li').css('font-size', '20px').html();
+    // $('h1, p, li').css({
+    //     'background-color': '#fff2ac'
+    // });
 
-    $('li').css('font-size', '20px').html();
-    $('h1, p, li').css({
-        'background-color': '#fff2ac'
+    $('h1').click(function () {
+    $(this).css('background-color', 'hotpink')
     });
+
+    $('p').dblclick(function () {
+    $(this).css('font-size', '18px')
+    });
+
+    $('li').hover(function () {
+        $(this).css('color', 'red');
+    }, function () {
+        $(this).css('color', 'black')
+    });
+
+
+
+
+
+
 
 </script>
 </body>
