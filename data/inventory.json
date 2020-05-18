@@ -11,7 +11,7 @@
         "quantity": 5,
         "categories": [
             "tool",
-            "powered"
+            " powered"
         ],
         "price": 100
     }, {
@@ -19,8 +19,8 @@
         "quantity": 5,
         "categories": [
             "tool",
-            "gas",
-            "outdoor"
+            " gas",
+            " outdoor"
         ],
         "price": 200
     }, {
@@ -42,8 +42,8 @@
     "quantity": 1,
     "categories": [
         "tool",
-        "outdoors",
-        "sand bags"
+        " outdoors ",
+        " sand bags "
     ],
     "price": 125
 }
