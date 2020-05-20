@@ -11,20 +11,37 @@
         h1 {
             color: darkred;
             text-shadow: 2px 2px grey;
+            animation: 1s ease-out 0s 1 slideInFromLeft;
+            padding: 30px;
         }
         footer {
             color: red;
+            animation: 1s ease-out 0s 1 slideInFromRight;
         }
 
         p {
             color: white;
             background: #111111;
             opacity: 75%;
+            animation: 1s ease-out 0s 1 slideInFromRight;
         }
+       @keyframes slideInFromLeft {
+           0% {
+               transform: translateX(-100%);
+           }
+           100% {
+               transform: translateX(0);
+           }
+       }
 
-
-
-
+       @keyframes slideInFromRight {
+           0% {
+               transform: translateX(100%);
+           }
+           100% {
+               transform: translateX(0);
+           }
+       }
     </style>
 </head>
 <body>

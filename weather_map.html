@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Weather Map</title>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary">
+    <span class="navbar-brand mb-0 h1">Weather App</span>
+    <form class="form-inline">
+        <p id="city"></p>
+    </form>
+</nav>
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+        <input id="search" class="form-control mr-sm-2" type="search" placeholder="City..." aria-label="Search">
+        <button id="srch-btn" class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+<div id='map' style='width: 98vw; height: 500px;'></div>
+
+
+<div id="weatherCard" class="d-flex"> </div>
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"
+></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="js/keys.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+<script>
+    "use strict";
+    var weatherUrl = "https://api.openweathermap.org/data/2.5/onecall";
+    var weatherOptions = {
+        lat: 29.4241,
+        lon: -98.4936,
+        appid: OPEN_WEATHER_APID,
+        exclude: " minutely, current, hourly",
+        units: "imperial"
+    };
+    $.get(weatherUrl, weatherOptions).done(function (data) {
+        console.log(data)
+    });
+
+    // ================ Marker Section ===================
+    mapboxgl.accessToken = mapboxKey;
+    var map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v9",
+        zoom: 8,
+        center: [-98.4936, 29.4241]
+    });
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-98.459786, 29.727166])
+        .addTo(map);
+
+    marker.setDraggable(true);
+
+    marker.on('dragend', function () {
+        var location = marker.getLngLat();
+        weatherOptions.lon = location.lng;
+        weatherOptions.lat = location.lat;
+        weatherUpdate();
+    });
+
+    function geocode(search, token) {
+        var baseUrl = 'https://api.mapbox.com';
+        var endPoint = '/geocoding/v5/mapbox.places/';
+        return fetch(baseUrl + endPoint + encodeURIComponent(search + '.json' + '?' + 'access_token=') + token)
+        .then(function (res) {
+            return res.json();
+
+        }).then(function (data) {
+                return data.features[0].center;
+            });
+    }
+
+    var citySearch = document.querySelector("#search");
+
+    $('#srch-btn').click(function (e) {
+    e.preventDefault();
+        geocode(citySearch.value, mapboxKey).then(function (result) {
+        map.setCenter(result);
+        map.setZoom(10);
+        console.log(result);
+        weatherOptions.lon = result[0];
+        weatherOptions.lat = result[1];
+
+        marker.setLngLat(result);
+        weatherUpdate();
+    });
+    });
+
+
+    function setCurrentCity(cityName) {
+        $("#city").html("Current City : " + cityName);
+    }
+
+    reverseGeocode({
+        lat: 29.4241,
+        lng: -98.4936,
+    }, mapboxKey).then(function (data) {
+        setCurrentCity(data);
+        var dataR = data.split(",");
+        $("#city").html("Current City : " + dataR[1]);
+    });
+
+    function todayDate(timestamp) {
+        return new Date(timestamp * 1000).toLocaleDateString()
+    }
+
+    function weatherUpdate() {
+        $.get(weatherUrl, weatherOptions).done(function (data) {
+            var todayWeather = todayDate(data.daily[0].dt);
+            $("#weatherCard").html(todayDate(data.daily[0].dt));
+            var forecast = "";
+            for (var i = 0; i <= 4; i++) {
+                forecast += "<div class='card' style='width: 15rem; padding: 1em; margin: 2em; background: #007BFF'>";
+                forecast += "<div class='card-header heading'>" + todayDate(data.daily[i].dt) + "</div>";
+                forecast += "<li class='list-group-item temp'>" + "High: " + data.daily[i].temp.max + "&#8457; " + "Low: " + data.daily[i].temp.min + "&#8457;" + "</li>";
+                forecast += "<li class='list-group-item'>" + "Description : " + data.daily[i].weather[0].description + "</li>";
+                forecast += "<li class='list-group-item'>" + "Humidity : " + data.daily[i].humidity + "</li>";
+                forecast += "<li class='list-group-item'>" + "Wind : " + data.daily[i].wind_speed + "</li>";
+                forecast += "<li class='list-group-item'>" + "Pressure : " + data.daily[i].pressure + "</li>";
+                forecast += "</div>"
+            }
+            $("#weatherCard").html(forecast);
+        });
+    }
+
+    weatherUpdate()
+</script>
+</body>
+</html>
